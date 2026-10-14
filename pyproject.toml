@@ -1,0 +1,17 @@
+[project]
+name = "python-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jibran Zafar", email = "jibranzafar0309@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=7.4.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "python-ai",
+]

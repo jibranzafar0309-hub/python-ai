@@ -1,8 +1,8 @@
-My AI Dev Toolkit
------------------
-uv: 0.13.1 
-Python: 3.13.14
-Editor: VS Code 1.141.1
-Git: 2.55.0.
-Ollama: 0.40.4
-Claude Code: 2.1.295
+print("My AI Dev Toolkit")
+print("-----------------")
+print("uv: 0.13.1")
+print("Python: 3.13.14")
+print("Editor: VS Code 1.141.1")
+print("Git: 2.55.0")
+print("Ollama: 0.40.4")
+print("Claude Code: 2.1.295")

@@ -4,66 +4,50 @@ Answers common questions (hours, price, order, delivery), hands complaints
 to a human, and counts the questions it could not answer.
 """
 
-BUSINESS = "Sweet Crumbs Bakery"
-BOT = "Sweet Crumbs Bot"
-COMPLAINT_WORDS = ["late", "wrong", "cold", "refund", "complaint", "delayed", "bad", "problem"]
-
 message_count = 0
 unanswered = 0
 complaints = 0
 
-print(f"{BOT}: Hi! Ask about hours, prices, orders or delivery. Type 'bye' to exit.")
+print("Sweet Crumbs Bot: Hi! Ask about hours, prices, orders or delivery. Type 'bye' to exit.")
 
 # Why: ask the name ONCE, before the loop. Inside the loop it would repeat every message.
-name = input(f"{BOT}: What is your name? ").strip().title()
+name = input("Sweet Crumbs Bot: What is your name? ").strip().title()
 
 while True:
+    # Why: .strip().lower() fixes extra spaces and capitals, so "  HOURS " still matches "hours".
     message = input(f"{name}: ").strip().lower()
 
-    # Why: an empty message is not a real question, so we ask again
-    # and do NOT count it in the summary.
     if message == "":
-        print(f"{BOT}: Please type a question.")
-        continue
-
-    message_count += 1
-
-    # Why: remove punctuation and split into words, so "late?" matches "late"
-    # and "chocolate" does NOT match "late" (we compare whole words, not pieces).
-    clean = message
-    for mark in "?!.,":
-        clean = clean.replace(mark, "")
-    words = clean.split()
-
-    # Why: complaint and human rules come FIRST. An angry customer must reach
-    # a person, even if their message also contains a word like "order".
-    if "agent" in words or "human" in words:
-        print(f"{BOT}: Connecting you to a human...")
-        break
-    elif any(word in words for word in COMPLAINT_WORDS):
-        complaints += 1
-        print(f"{BOT}: Sorry about that. The manager will call you today.")
-    elif clean == "bye":
-        print(f"{BOT}: Take care, {name}!")
-        break
-    # Why: short words like "hi" are checked with == / startswith, not `in`,
-    # because "hi" is hidden inside "which" and "this".
-    elif clean == "hi" or clean.startswith("hi ") or clean.startswith("hello") or clean.startswith("salam"):
-        print(f"{BOT}: Hi {name}! Ask about hours, prices, orders or delivery.")
-    elif any(word in words for word in ["hours", "hour", "time", "timing", "timings", "open", "close"]):
-        print(f"{BOT}: We are open 9 am to 9 pm, every day.")
-    elif "price" in words or "cost" in words or "how much" in clean:
-        print(f"{BOT}: Cakes start from 1,500 PKR per pound.")
-    elif "order" in words or "whatsapp" in words:
-        print(f"{BOT}: Please send flavour, weight and date, {name}. We need 1 day notice.")
-    elif "delivery" in words or "deliver" in words:
-        print(f"{BOT}: We deliver within 5 km. Delivery charge is 200 PKR.")
+        print("Sweet Crumbs Bot: Please type a question.")
     else:
-        unanswered += 1
-        print(
-            f"{BOT}: I am not sure yet. In Module 2, an AI will answer: "
-            f"You are the friendly assistant of {BUSINESS}. Answer in 2 lines: {message}"
-        )
+        message_count = message_count + 1
+
+        # Why: complaint rule is FIRST, so an unhappy customer always reaches
+        # a person, even if the message also has a word like "order".
+        if "late" in message or "wrong" in message or "cold" in message or "refund" in message or "complaint" in message or "problem" in message:
+            complaints = complaints + 1
+            print("Sweet Crumbs Bot: Sorry about that. The manager will call you today.")
+        elif "agent" in message or "human" in message:
+            print("Sweet Crumbs Bot: Connecting you to a human...")
+            break
+        elif message == "bye":
+            print(f"Sweet Crumbs Bot: Take care, {name}!")
+            break
+        # Why: "hi" is a short word hidden inside "which" and "this", so we
+        # check it with == and .startswith(), not with `in`.
+        elif message == "hi" or message.startswith("hello") or message.startswith("salam"):
+            print(f"Sweet Crumbs Bot: Hi {name}! Ask about hours, prices, orders or delivery.")
+        elif "hours" in message or "time" in message or "timing" in message or "open" in message or "close" in message:
+            print("Sweet Crumbs Bot: We are open 9 am to 9 pm, every day.")
+        elif "price" in message or "cost" in message or "how much" in message:
+            print("Sweet Crumbs Bot: Cakes start from 1,500 PKR per pound.")
+        elif "order" in message or "whatsapp" in message:
+            print(f"Sweet Crumbs Bot: Please send flavour, weight and date, {name}. We need 1 day notice.")
+        elif "deliver" in message:
+            print("Sweet Crumbs Bot: We deliver within 5 km. Delivery charge is 200 PKR.")
+        else:
+            unanswered = unanswered + 1
+            print(f"Sweet Crumbs Bot: I am not sure yet. In Module 2, an AI will answer: You are the friendly assistant of Sweet Crumbs Bakery. Answer in 2 lines: {message}")
 
 print("=" * 40)
 print(f"Chat summary: {message_count} messages, {unanswered} unanswered.")

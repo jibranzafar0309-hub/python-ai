@@ -32,5 +32,5 @@
 | `/quote`, pizza, 2 | "Not on our menu", no crash | Pass |
 | `can I change my phone number on the order?` | Local model, cost 0 | Pass |
 | Press Enter with no text | Asks again | Pass |
-| `BYE` | Goodbye + session report | |
+| `BYE` | Goodbye + session report | Pass |
 | `do you have chocolate cake?` | Fallback, not complaint ("late" hides in "chocolate") | Pass |

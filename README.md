@@ -62,3 +62,8 @@ A Python tool that turns a local business's details into 3 ready-to-use AI promp
 | 6 | Order | order, cake, whatsapp | Please send flavour, weight and date. We need 1 day notice. |
 | 7 | Delivery | delivery, deliver | We deliver within 5 km. Delivery charge is 200 PKR. |
 | 8 | Fallback | anything else | Count it as unanswered and print the Module 2 AI prompt. |
+## Project M1 Part 2: Sweet Crumbs Front Desk
+
+A Python front desk for a bakery that answers common questions with rules, calculates exact price quotes, and prepares AI-ready prompts for everything else.
+
+**Run:**

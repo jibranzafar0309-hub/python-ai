@@ -21,4 +21,4 @@ Answer Ali Raza in 2 short lines. Question: Can i change my phone number on the 
 Absolutely! We can update your number during checkout
 or via email.
 
-**Judgement:** Useful / Not useful, kyun?
+**Judgement:** Not useful,The model invented a "checkout" and "email" process. Our bakery takes orders on WhatsApp, so this is a hallucinated process.

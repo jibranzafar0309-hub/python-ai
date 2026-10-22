@@ -67,3 +67,10 @@ A Python tool that turns a local business's details into 3 ready-to-use AI promp
 A Python front desk for a bakery that answers common questions with rules, calculates exact price quotes, and prepares AI-ready prompts for everything else.
 
 **Run:**
+```
+uv run code/project_m1_front_desk.py
+```
+
+![Full session with report](docs/project-m1-part2-run.png)
+
+**Value:** Saves the owner about 2 hours a day of answering the same WhatsApp questions and prevents price-quote mistakes, so the owner would pay for it because staff time and wrong quotes cost real money.
